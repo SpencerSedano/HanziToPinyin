@@ -1,22 +1,11 @@
-import csv
-import pinyin as p
-import pandas as pd
+from pypinyin import pinyin, lazy_pinyin, Style
 
+user_input = input("Enter a Chinese characters word: ")
+print(user_input)
 
-print(p.get('我是余胖胖'))
-
-# Read content of csv
-file = pd.read_csv("cswords.csv")
-print(file)
-
-#Adding the header
-headerList = ['character']
-
-# convert data frame to csv
-file.to_csv("cswords2.csv", header=headerList, index=False)
-
-file2 = pd.read_csv("cswords2.csv")
-print(file2)
-
-
-
+user_input_pinyin = pinyin(user_input)
+print(type(user_input_pinyin))
+user_input_pinyin = str(user_input_pinyin)
+print(user_input_pinyin)
+user_input_pinyin_formatted = "".join(c for c in user_input_pinyin if c.isalpha())
+print(user_input_pinyin_formatted)
